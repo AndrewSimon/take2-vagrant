@@ -1,0 +1,14 @@
+<VirtualHost *:<%= @port %>>
+    ServerName <%= @hostname %>.com
+    ServerAlias www.<%= @hostname %>.com
+    ServerAdmin webmaster@<%= @hostname %>.com
+    DocumentRoot <%= @docroot %>
+<Directory "<%= @docroot %>/">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</Directory>
+    ErrorLog /var/log/httpd/<%= @hostname %>-error.log
+    CustomLog /var/log/httpd/<%= @hostname %>-access.log common
+</VirtualHost>
