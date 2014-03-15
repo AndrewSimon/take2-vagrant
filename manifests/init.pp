@@ -45,6 +45,11 @@ class configure_vhosts {
     mode => 0644,
     content => template("/vagrant/templates/vhosts.erb"),
   }
+ file { "/etc/httpd/conf/httpd.conf":
+    ensure => file,
+    mode => 0644,
+    content => template("/vagrant/templates/httpd.erb"),
+  }
 }
 
 class start_apache_service {

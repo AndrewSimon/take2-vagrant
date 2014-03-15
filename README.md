@@ -2,10 +2,10 @@
 
 Project demo for Take-two interactive 
 
-## VM description
- 
- - OS: CentOS 6
- - virtualbox vm: 4.1
+## Description
+ - Vagrant via Puppet
+ - OS: Ubuntu host, CentOS 6 guest
+ - Provider vm: Virtualbox 4.1
 
 ## Howto
 
@@ -18,12 +18,15 @@ Project demo for Take-two interactive
     vagrant up
 
 -- Check apache is up on your desired ports
-	ssh -X root@localhost 
+	vagrant ssh 
 	wget http://localhost -O -
 	wget http://localhost:81 -O -
 
 -- Shut it down
     vagrant destroy
+
+-- Note: please remove vagrant user, insecure key, and change root
+   password if publicly accessible
 
 ## Copyright and license
 
