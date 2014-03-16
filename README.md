@@ -10,9 +10,11 @@ Project demo for Take-two Interactive
 ## Howto
 
 -- Setup --
- -  clone this repository: <pre>git clone git@github.com:AndrewSimon/take2-vagrant</pre>
- -  cd to the repo directory:<pre> cd take2-vagrant</pre>
- -  set vagrant home to current directory: <pre>export VAGRANT_HOME=`pwd`</pre>
+<pre>
+ -  clone this repository: <pre>git clone git@github.com:AndrewSimon/take2-vagrant
+ -  cd to the repo directory:<pre> cd take2-vagrant
+ -  set vagrant home to current directory: <pre>export VAGRANT_HOME=`pwd`
+</pre>
 
 -- Create CentOS box --
  -   vagrant up
