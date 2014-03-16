@@ -10,22 +10,20 @@ Project demo for Take-two Interactive
 ## Howto
 
 -- Setup --
-<pre>
--  clone this repository: git clone git@github.com:AndrewSimon/take2-vagrant
--  cd to the repo directory: cd take2-vagrant
--  set vagrant home to current directory: export VAGRANT_HOME=`pwd`
-</pre>
+ -  clone this repository: <pre>git clone git@github.com:AndrewSimon/take2-vagrant</pre>
+ -  cd to the repo directory:<pre> cd take2-vagrant</pre>
+ -  set vagrant home to current directory: <pre>export VAGRANT_HOME=`pwd`</pre>
 
 -- Create CentOS box --
-    vagrant up
+ -   vagrant up
 
 -- Check apache is up on your desired ports
-	vagrant ssh 
-	wget http://localhost -O -
-	wget http://localhost:81 -O -
+ - vagrant ssh 
+ - wget http://localhost -O -
+ - wget http://localhost:81 -O -
 
 -- Shut it down
-    vagrant destroy
+ - vagrant destroy
 
 -- Note: please remove vagrant user, insecure key, and change root
    password if publicly accessible
