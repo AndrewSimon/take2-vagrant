@@ -1,6 +1,6 @@
 # Description
 
-Project demo for Take-two interactive 
+Project demo for Take-two Interactive 
 
 ## Description
  - Vagrant via Puppet

@@ -1,9 +1,9 @@
-#
-## Puppet manifest run by Vagrantfile on vagrant up
-#
+#  Written by Andrew Simon
+## Puppet manifest run by Vagrantfile on vagrant up / provision / reload
+# 
 
 class install_rpms {
-  package {['ntpdate', 'git', 'wget', 'httpd', 'php']: ensure => 'present'
+  package {['ntpdate', 'wget', 'httpd', 'php']: ensure => 'present'
   }
 }
 
@@ -22,11 +22,12 @@ class configure_home_pages {
       mode => 0644,
       content => "<?php phpinfo(); ?>",
     }
+## These could go in configure_vhosts class to use the docroot variable
  file {'/var/www/html2':
       ensure  => directory,
       mode => 0644,
       content => "<H1>Hello World</H1>",
-      before => File['/var/www/html2/index.php'],
+      before => File['/var/www/html2/index.html'],
     }
  file {'/var/www/html2/index.php':
       ensure  => present,
@@ -36,11 +37,11 @@ class configure_home_pages {
 }
 
 class configure_vhosts {
-## Kind of a silly demonstration of the template function
+## Uses a template for httpd.conf and vhosts.conf
  $hostname = 'localhost'
  $port = '81'
  $docroot = '/var/www/html2'
- file { "/etc/httpd/conf.d/vhost_81.conf":
+ file { "/etc/httpd/conf.d/vhosts.conf":
     ensure => file,
     mode => 0644,
     content => template("/vagrant/templates/vhosts.erb"),
@@ -53,7 +54,7 @@ class configure_vhosts {
 }
 
 class start_apache_service {
-  service { 'httpd': ensure => running, enable => true, require => Package['httpd'], subscribe => File['/etc/httpd/conf.d/vhost_81.conf'],
+  service { 'httpd': ensure => running, enable => true, require => Package['httpd'], subscribe => File['/etc/httpd/conf.d/vhosts.conf'],
 } 
 }
 
