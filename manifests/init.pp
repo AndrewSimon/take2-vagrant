@@ -22,14 +22,13 @@ class configure_home_pages {
       mode => 0644,
       content => "<?php phpinfo(); ?>",
     }
-## These could go in configure_vhosts class to use the docroot variable
  file {'/var/www/html2':
       ensure  => directory,
       mode => 0644,
       content => "<H1>Hello World</H1>",
       before => File['/var/www/html2/index.html'],
     }
- file {'/var/www/html2/index.php':
+ file {'/var/www/html2/index.html':
       ensure  => present,
       mode => 0644,
       content => "<H1>Hello World</H1>",
